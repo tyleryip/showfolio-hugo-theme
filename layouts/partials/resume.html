@@ -1,27 +1,36 @@
 <section class="my-4 max-w-5xl mx-auto">
-  <div class="text-3xl font-bold mb-8">Resume</div>
+  <div class="text-3xl font-bold mb-4">Experience</div>
+  <hr class="mb-4" />
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid gap-4">
     <!-- Work Experience -->
     <div>
-      <div class="text-2xl font-semibold mb-4">Working Experience</div>
+      <div class="text-2xl font-semibold mb-4">Work Experience</div>
       {{ range .Site.Params.homepage.resume.work}}
-      <div>
-        <div class="text-xl font-bold my-2">{{.name}}</div>
-        <p class="my-1 font-light">{{.role}}</p>
+      <div class="mb-4">
+        <div class="text-xl font-bold my-1">{{.name}}</div>
+        <p class="text-lg my-1 font-light">{{.role}}</p>
         <p class="text-gray-500 my-1">{{.duration}}</p>
+        {{ range $index, $val := .details }}
+        <ul class="font-light my-1 ml-8">
+          <li class="list-disc">{{ $val }}</li>
+        </ul>
+        {{ end }}
       </div>
       {{ end }}
     </div>
-
+    <hr />
     <!-- Skills -->
     <div>
       <div class="text-2xl font-semibold mb-4">Skills</div>
-      {{ range .Site.Params.homepage.resume.skills}}
-      <div class="text-xl font-light my-2">{{.}}</div>
-      {{end}}
-    </div>
+      {{ with .Site.Params.homepage.resume.skills }}
+        {{ range $index, $val := .languages}}
+        <div class="font-light my-2">{{.}}</div>
+        {{end}}
 
+      {{ end }}
+    </div>
+    <hr />
     <!-- Courses -->
     <div>
       <div class="text-2xl font-semibold mb-4">Courses</div>
@@ -33,5 +42,6 @@
       </div>
       {{ end }}
     </div>
+    <hr />
   </div>
 </section>
