@@ -29,7 +29,14 @@
 
       <!-- Languages -->
       <div class="text-xl font-bold my-4">Languages</div>
-      <div class="grid grid-flow-row grid-cols-6 gap-4">
+      <div
+        class="
+          grid grid-flow-row grid-cols-2
+          gap-2
+          md:grid-cols-4
+          lg:grid-cols-6
+        "
+      >
         {{ range $index, $val := .languages}}
         <div class="font-light my-1 text-center">{{.}}</div>
         {{ end }}
@@ -37,7 +44,14 @@
 
       <!-- Technologies -->
       <div class="text-xl font-bold my-4">Technologies/Frameworks</div>
-      <div class="grid grid-flow-row grid-cols-6 gap-4">
+      <div
+        class="
+          grid grid-flow-row grid-cols-2
+          gap-2
+          md:grid-cols-4
+          lg:grid-cols-6
+        "
+      >
         {{ range $index, $val := .technologies}}
         <div class="font-light my-1 text-center">{{.}}</div>
         {{ end }}
@@ -45,7 +59,14 @@
 
       <!-- Concepts -->
       <div class="text-xl font-bold my-4">Concepts</div>
-      <div class="grid grid-flow-row grid-cols-6 gap-4">
+      <div
+        class="
+          grid grid-flow-row grid-cols-2
+          gap-2
+          md:grid-cols-4
+          lg:grid-cols-6
+        "
+      >
         {{ range $index, $val := .concepts}}
         <div class="font-light my-1 text-center">{{.}}</div>
         {{ end }}
