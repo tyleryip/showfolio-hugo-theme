@@ -1,8 +1,11 @@
 <section class="p-4 flex flex-col items-center">
-  {{ $authorName := .Site.Params.author }}
-  {{ with .Site.Params.authorImage }}
-  <div class="w-48 h-48 rounded-full mb-6 bg-red-100">
-    <img src="{{.}}" class="w-full p-2 h-full object-contain" alt="{{ $authorName }}" />
+  {{ $authorName := .Site.Params.author }} {{ with .Site.Params.authorImage }}
+  <div class="w-48 h-48 rounded-full mb-6 bg-blue-100">
+    <img
+      src="{{.}}"
+      class="w-full p-1 h-full object-contain"
+      alt="{{ $authorName }}"
+    />
   </div>
   {{ end }}
 
@@ -13,7 +16,17 @@
     class="text-5xl md:text-6xl font-bold text-center max-w-3xl mb-4 relative"
   >
     <div
-      class="absolute top-10 opacity-20 transform left-1/2 -translate-x-1/2 text-red-300 z-0 w-full"
+      class="
+        absolute
+        top-10
+        opacity-20
+        transform
+        left-1/2
+        -translate-x-1/2
+        text-blue-300
+        z-0
+        w-full
+      "
     >
       <svg
         class="max-w-xs md:max-w-lg mx-auto w-full"
@@ -29,7 +42,7 @@
     </div>
     <div class="relative">{{ .Site.Params.homepage.tagline }}</div>
   </div>
-  <p class="font-light text-center max-w-sm mb-8">
+  <p class="font-light text-center max-w-lg mb-8">
     {{ .Site.Params.homepage.description }}
   </p>
 
@@ -38,8 +51,19 @@
     href="{{ . }}"
     rel="noopener noreferrer"
     target="_blank"
-    class="px-6 py-4 rounded-full font-semibold text-lg bg-black text-white hover:bg-gray-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-200"
-    >Talk to me</a
+    class="
+      px-6
+      py-4
+      rounded-full
+      font-semibold
+      text-lg
+      bg-black
+      text-white
+      hover:bg-gray-800
+      transition-colors
+      dark:bg-white dark:text-black dark:hover:bg-gray-200
+    "
+    >Connect with me</a
   >
   {{ end }}
 </section>
