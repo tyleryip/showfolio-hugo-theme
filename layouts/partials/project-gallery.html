@@ -1,42 +1,113 @@
-<section
-  class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8 max-w-5xl mx-auto"
-  style="min-height: 300px"
->
-  {{ $username := .Site.Params.homepage.codepen.username }} {{ range $index,
-  $val :=.Site.Params.homepage.codepen.pens }}
+<section class="my-4 max-w-5xl mx-auto mb-8" style="min-height: 300px">
+  <div class="text-4xl md:text-5xl font-bold mb-2">Projects</div>
+  {{ range $index, $val := .Site.Params.project }}
   <div
-    class="relative {{ if eq (sub (mod $index  3) 1) 0 }}row-span-2{{end}} shadow-sm md:shadow-2xl"
+    class="flex mb-8 md:mb-4 md:flex-row {{ if (modBool $index 2) }} flex-col {{ else }} flex-col-reverse {{ end }}"
   >
-    <img
-      class="rounded object-cover w-full h-full"
-      loading="lazy"
-      src="https://codepen.io/{{ $username }}/pen/{{ $val }}/image/small.png"
-    />
-    <div
-      class="
-        absolute
-        top-0
-        left-0
-        rounded
-        w-full
-        h-full
-        bg-black bg-opacity-30
-        grid
-        place-items-center
-        opacity-0
-        hover:opacity-100
-        transition-opacity
-        duration-200
-      "
-    >
-      <a
-        class="px-6 py-2 rounded-full bg-black text-white"
-        href="https://codepen.io/{{ $username }}/pen/{{ $val }}"
-        target="_blank"
-        rel="noopener noreferrer"
-        >View in Codepen</a
-      >
+    {{ if (modBool $index 2) }}
+    <!-- The title, tags, and description -->
+    <div class="w-full md:w-1/3 md:flex-grow md:my-4">
+      <div class="text-2xl my-1">{{ $val.title }}</div>
+      <div class="flex flex-row flex-wrap">
+        {{ range .tags }}
+
+        <!-- The tags -->
+        <span
+          class="
+            flex-initial
+            text-center
+            font-weight-bold
+            text-xs
+            mr-2
+            my-1
+            px-1
+            py-1
+            border-2
+            rounded-lg
+            bg-gray-200
+            dark:bg-gray-900 dark:border-gray-100
+          "
+        >
+          {{.}}
+        </span>
+        {{ end }}
+      </div>
+      <p class="mt-2 font-light">{{ $val.description }}</p>
     </div>
+
+    <!-- The preview image and link -->
+    <div class="w-full my-2 md:w-2/3 md:ml-4 md:pl-2 md:py-2 md:my-4">
+      <a href="{{$val.link}}">
+        <img
+          class="
+            object-contain
+            box-border
+            rounded-2xl
+            h-auto
+            w-full
+            transform
+            transition
+            duration-500
+            md:hover:scale-105 md:hover:shadow-2xl
+          "
+          src="{{$val.preview}}"
+          alt="{{$val.title}}"
+        />
+      </a>
+    </div>
+
+    {{ else }}
+
+    <!-- The preview image and link -->
+    <div class="w-full my-2 md:w-2/3 md:mr-4 md:pr-2 md:my-2 md:my-4">
+      <a href="{{$val.link}}">
+        <img
+          class="
+            object-contain
+            box-border
+            rounded-2xl
+            h-auto
+            w-full
+            transform
+            transition
+            duration-500
+            md:hover:scale-105 md:hover:shadow-2xl
+          "
+          src="{{$val.preview}}"
+          alt="{{$val.title}}"
+        />
+      </a>
+    </div>
+    <!-- The title, tags, and description -->
+    <div class="w-full md:w-1/3 md:flex-grow md:my-4">
+      <div class="text-2xl my-1">{{ $val.title }}</div>
+      <div class="flex flex-row flex-wrap">
+        {{ range .tags }}
+
+        <!-- The tags -->
+        <span
+          class="
+            flex-initial
+            text-center
+            font-weight-bold
+            text-xs
+            mr-2
+            my-1
+            px-1
+            py-1
+            border-2
+            rounded-lg
+            bg-gray-200
+            dark:bg-gray-900 dark:border-gray-100
+          "
+        >
+          {{.}}
+        </span>
+        {{ end }}
+      </div>
+      <p class="mt-2 font-light">{{ $val.description }}</p>
+    </div>
+    {{ end }}
   </div>
   {{ end }}
 </section>
