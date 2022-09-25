@@ -13,10 +13,18 @@
         </div>
         <p class="text-lg my-1 font-light">{{.role}}</p>
         <p class="text-gray-500 my-1">{{.duration}}</p>
-        {{ range $index, $val := .details }}
-        <ul class="font-light my-1 ml-8">
-          <li class="list-disc">{{ $val }}</li>
-        </ul>
+        {{ range $index, $val := .section }}
+        <p class="text-lg mt-4 ml-4">{{ $val.name }}</p>
+          {{ range $index, $val := .bullet }}
+            <ul class="font-light my-1 ml-10">
+              <li class="list-disc">{{ $val.parent }}</li>
+              {{ range $index, $val := .children }}
+              <ul class="font-light text-gray-500 my-1 ml-10">
+                <li class="list-disc">{{ $val }}</li>
+              </ul>
+              {{ end }}
+            </ul>
+          {{ end }}
         {{ end }}
       </div>
       {{ end }}
